@@ -12,37 +12,30 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Using Resend API (free tier: 100 emails/day)
-    const response = await fetch('https://api.resend.com/emails', {
+    // Using Web3Forms API (free, no backend needed)
+    const formData = new FormData();
+    formData.append('access_key', process.env.WEB3FORMS_ACCESS_KEY);
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('subject', `Portfolio Contact: ${subject}`);
+    formData.append('message', `From: ${name} (${email})\n\nSubject: ${subject}\n\nMessage:\n${message}`);
+    formData.append('redirect', 'false');
+
+    const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
-      },
-      body: JSON.stringify({
-        from: 'Portfolio Contact <onboarding@resend.dev>',
-        to: ['rolandalalam@gmail.com'],
-        reply_to: email,
-        subject: `Portfolio Contact: ${subject}`,
-        html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Subject:</strong> ${subject}</p>
-          <h3>Message:</h3>
-          <p>${message.replace(/\n/g, '<br>')}</p>
-        `
-      })
+      body: formData
     });
 
-    if (!response.ok) {
-      throw new Error('Failed to send email');
+    const data = await response.json();
+
+    if (data.success) {
+      return res.status(200).json({ 
+        success: true, 
+        message: 'Email sent successfully!' 
+      });
+    } else {
+      throw new Error(data.message || 'Failed to send email');
     }
-
-    return res.status(200).json({ 
-      success: true, 
-      message: 'Email sent successfully!' 
-    });
   } catch (error) {
     console.error('Email error:', error);
     return res.status(500).json({ 
