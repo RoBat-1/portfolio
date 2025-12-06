@@ -43,7 +43,7 @@ function Contact() {
     {
       icon: 'fas fa-map-marker-alt',
       title: 'Location',
-      content: 'San Francisco, CA',
+      content: 'Barhalioun - Becharre, Lebanon',
       link: null
     }
   ];
