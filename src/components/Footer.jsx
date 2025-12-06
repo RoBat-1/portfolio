@@ -5,7 +5,7 @@ function Footer() {
     { icon: 'fab fa-github', url: 'https://github.com' },
     { icon: 'fab fa-linkedin', url: 'https://linkedin.com' },
     { icon: 'fab fa-twitter', url: 'https://twitter.com' },
-    { icon: 'fas fa-envelope', url: 'mailto:contact@rolandalam.com' }
+    { icon: 'fas fa-envelope', url: 'mailto:rolandalalam@gmail.com' }
   ];
 
   return (

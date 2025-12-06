@@ -31,8 +31,8 @@ function Contact() {
     {
       icon: 'fas fa-envelope',
       title: 'Email',
-      content: 'contact@rolandalam.com',
-      link: 'mailto:contact@rolandalam.com'
+      content: 'rolandalalam@gmail.com',
+      link: 'mailto:rolandalalam@gmail.com'
     },
     {
       icon: 'fas fa-phone',

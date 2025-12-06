@@ -24,7 +24,7 @@ function Hero() {
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="mailto:contact@rolandalam.com" aria-label="Email">
+            <a href="mailto:rolandalalam@gmail.com" aria-label="Email">
               <i className="fas fa-envelope"></i>
             </a>
           </div>
