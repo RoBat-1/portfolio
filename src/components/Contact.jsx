@@ -17,8 +17,14 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
+    
+    // Create mailto link with form data
+    const mailtoLink = `mailto:rolandalalam@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+    
+    // Reset form
     setFormData({
       name: '',
       email: '',
