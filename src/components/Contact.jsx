@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -19,30 +20,31 @@ function Contact() {
     e.preventDefault();
     
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
+      // EmailJS configuration
+      const serviceID = 'service_portfolio'; // You'll get this from EmailJS
+      const templateID = 'template_contact'; // You'll get this from EmailJS
+      const publicKey = 'YOUR_PUBLIC_KEY'; // You'll get this from EmailJS
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'rolandalalam@gmail.com'
+      };
+
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      
+      alert('Thank you! Your message has been sent successfully.');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert('Thank you! Your message has been sent successfully.');
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
-      } else {
-        alert(data.message || 'Failed to send message. Please try again.');
-      }
     } catch (error) {
       console.error('Error:', error);
-      alert('Failed to send message. Please try again.');
+      alert('Failed to send message. Please try again or email directly at rolandalalam@gmail.com');
     }
   };
 
