@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import emailjs from '@emailjs/browser';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -16,36 +15,22 @@ function Contact() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
-    try {
-      // EmailJS configuration
-      const serviceID = 'service_portfolio'; // You'll get this from EmailJS
-      const templateID = 'template_contact'; // You'll get this from EmailJS
-      const publicKey = 'YOUR_PUBLIC_KEY'; // You'll get this from EmailJS
-
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        to_email: 'rolandalalam@gmail.com'
-      };
-
-      await emailjs.send(serviceID, templateID, templateParams, publicKey);
-      
-      alert('Thank you! Your message has been sent successfully.');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Failed to send message. Please try again or email directly at rolandalalam@gmail.com');
-    }
+    // Create Gmail compose URL with form data
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=rolandalalam@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    
+    // Open Gmail in a new tab
+    window.open(gmailUrl, '_blank');
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
   };
 
   const contactInfo = [
