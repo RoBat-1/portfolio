@@ -18,11 +18,11 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Create mailto link with form data
-    const mailtoLink = `mailto:rolandalalam@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    // Create Gmail compose link with form data
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=rolandalalam@gmail.com&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
     
-    // Open default email client
-    window.location.href = mailtoLink;
+    // Open Gmail in new tab
+    window.open(gmailLink, '_blank');
     
     // Reset form
     setFormData({
