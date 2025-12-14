@@ -3,8 +3,7 @@ function Projects() {
     {
       title: 'POS System',
       description: 'Full-featured point of sale system with inventory management, sales tracking, and real-time analytics dashboard.',
-      // use the user-provided POS photo
-      image: 'https://bimpos.com/sites/default/files/images/posts/whatsapp_image_2023-07-06_at_3.17.29_pm.jpeg',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
       tech: ['React', 'Node.js', 'MongoDB'],
       liveUrl: 'https://pos-3a5wd9463-robat-1s-projects.vercel.app/login',
       githubUrl: '#'
@@ -12,7 +11,7 @@ function Projects() {
     {
       title: 'POS Restaurant Website',
       description: 'Modern restaurant website with online ordering system, menu management, table reservations, and integrated point of sale.',
-      image: 'https://cdn.prod.website-files.com/60870ff4852ead369670e13e/667f27e8b67024e1f6e26d5c_restaurant%20pos%20system.webp',
+      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80',
       tech: ['React', 'Node.js', 'Express'],
       liveUrl: '#',
       githubUrl: '#'
@@ -20,7 +19,7 @@ function Projects() {
     {
       title: 'Modern Business Website',
       description: 'Fully responsive corporate website with animated hero sections, dynamic contact forms, and optimized performance.',
-      image: 'https://images-platform.99static.com//mxco4bPXgMdUjyw0hbTPnDZR5OY=/0x0:2220x2220/fit-in/500x500/projects-files/122/12269/1226901/a1900302-fbbf-448b-969f-759eb7698f23.png',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
       tech: ['HTML5', 'CSS3', 'JavaScript'],
       liveUrl: 'https://business-website-template-main-enb4gdpzj-robat-1s-projects.vercel.app/',
       githubUrl: '#'
@@ -28,7 +27,7 @@ function Projects() {
     {
       title: 'Restaurant Landing Page',
       description: 'Eye-catching single-page website with smooth scrolling, image galleries, and online reservation integration.',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdZOprbaNy7vwLt_va0GTOC7F6h_jV7ONZsA&s',
+      image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80',
       tech: ['React', 'Tailwind', 'Framer Motion'],
       liveUrl: 'https://eatwell-restaurant.vercel.app/',
       githubUrl: '#'
@@ -36,17 +35,19 @@ function Projects() {
     {
       title: 'E-Commerce Storefront',
       description: 'Responsive online store with product catalogs, shopping cart functionality, and checkout pages.',
+      image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80',
       tech: ['React', 'Bootstrap', 'Stripe']
     },
     {
       title: 'Real Estate Website',
       description: 'Property listing website with search filters, interactive maps, and detailed property pages.',
+      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
       tech: ['React', 'Leaflet', 'CSS3']
     },
     {
       title: 'Fitness Studio Site',
       description: 'Vibrant website for a fitness studio with class schedules, trainer profiles, and membership signup.',
-      image: 'https://cdn.prod.website-files.com/687e8d1b96312cc631cafec7/68c490cf1202aaaa3643f2f0_65c183700d8fbc2492a6c314_6531361ccf5757c2e991e9fb_6pWiS1br6sImopelr9oFycse8XLyhAhsekWbiO9joSDCA1C1A8WdoqGUwSQ27hdFGHSQLYcPNW6LbG0Mj-y0shVQpObaToGnAWatUFwUItJYcEGgpcPj4A-RMiEubBUsOMT5qMlTw5n2wnsvvbA9pHo.png',
+      image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80',
       tech: ['HTML5', 'SCSS', 'JavaScript']
     }
   ];
@@ -66,6 +67,11 @@ function Projects() {
                     className="project-thumb"
                     loading="eager"
                     fetchpriority="high"
+                    crossOrigin="anonymous"
+                    onError={(e) => {
+                      console.log(`Failed to load image: ${project.image}`);
+                      e.target.style.display = 'none';
+                    }}
                   />
                 ) : (
                   <></>
