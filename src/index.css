@@ -54,6 +54,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   min-width: 320px;
+  -webkit-tap-highlight-color: rgba(99, 102, 241, 0.2);
 }
 
 #root {
@@ -68,6 +69,32 @@ body {
   padding: var(--container-padding);
 }
 
+/* Prevent background scrolling when mobile nav/menu is open */
+.no-scroll {
+  overflow: hidden !important;
+}
+
+/* Mobile-friendly variable overrides */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 60px 0;
+    --container-padding: 0 16px;
+  }
+  .container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 40px 0;
+    --container-padding: 0 12px;
+  }
+  body {
+    font-size: 15px;
+  }
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
@@ -77,4 +104,9 @@ h1, h2, h3, h4, h5, h6 {
 a {
   text-decoration: none;
   color: inherit;
+  -webkit-tap-highlight-color: rgba(99, 102, 241, 0.2);
+}
+
+button {
+  -webkit-tap-highlight-color: rgba(99, 102, 241, 0.2);
 }

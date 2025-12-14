@@ -138,7 +138,15 @@
   display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 4px;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
 }
 
 .hamburger span {
@@ -149,9 +157,27 @@
   transition: all var(--transition-base);
 }
 
+/* Hamburger -> X animation */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Make nav buttons easier to tap */
+.nav-menu .nav-link {
+  padding: 12px 8px;
+  display: inline-block;
+}
+
 /* Hero Section */
 .hero {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   position: relative;
@@ -429,6 +455,27 @@
   overflow: hidden;
 }
 
+.project-image .project-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .project-image {
+    height: 160px;
+  }
+
+  .hero {
+    padding: 40px 0;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+}
+
 .project-card:nth-child(2n) .project-image {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
@@ -679,6 +726,8 @@
     transition: left var(--transition-base);
     padding: 2rem 0;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
   }
 
   .nav-menu.active {
@@ -706,8 +755,22 @@
     font-size: 2rem;
   }
 
+  .section-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .contact-content {
@@ -718,18 +781,59 @@
     flex-direction: column;
     text-align: center;
   }
+
+  .social-links a {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+
+  .contact-info {
+    gap: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
 }
 
 @media (max-width: 480px) {
   .hero-title {
     font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
   }
 
   .section-title {
     font-size: 1.8rem;
   }
 
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
   .stat-card h3 {
     font-size: 2.5rem;
+  }
+
+  .skill-category h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    padding: 10px 24px;
+    font-size: 0.95rem;
   }
 }

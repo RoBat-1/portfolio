@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="POS system screenshot mock">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="#0f172a"/>
+  <rect x="40" y="40" width="1120" height="620" rx="14" fill="url(#g1)" opacity="0.12"/>
+  <rect x="70" y="80" width="1060" height="540" rx="8" fill="#071029"/>
+
+  <!-- Header -->
+  <rect x="90" y="100" width="980" height="56" rx="6" fill="#0b1220"/>
+  <circle cx="120" cy="128" r="16" fill="#06b6d4"/>
+  <rect x="150" y="112" width="280" height="32" rx="6" fill="#0b1220"/>
+
+  <!-- Left panel (items) -->
+  <rect x="90" y="172" width="420" height="380" rx="8" fill="#0d1624"/>
+  <g fill="#121826">
+    <rect x="110" y="196" width="380" height="48" rx="6"/>
+    <rect x="110" y="256" width="380" height="48" rx="6"/>
+    <rect x="110" y="316" width="380" height="48" rx="6"/>
+    <rect x="110" y="376" width="380" height="48" rx="6"/>
+    <rect x="110" y="436" width="380" height="48" rx="6"/>
+  </g>
+
+  <!-- Right panel (receipt/pay) -->
+  <rect x="540" y="172" width="530" height="380" rx="8" fill="#071029"/>
+  <rect x="560" y="196" width="480" height="48" rx="6" fill="#0b1220"/>
+  <rect x="560" y="260" width="220" height="36" rx="6" fill="#0b1220"/>
+  <rect x="560" y="308" width="480" height="36" rx="6" fill="#0b1220"/>
+  <rect x="560" y="356" width="360" height="36" rx="6" fill="#0b1220"/>
+  <rect x="560" y="404" width="200" height="48" rx="10" fill="#06b6d4"/>
+
+  <!-- Footer badge -->
+  <rect x="90" y="580" width="220" height="36" rx="18" fill="#091124"/>
+  <text x="200" y="606" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">POS System • Mock Screenshot</text>
+</svg>

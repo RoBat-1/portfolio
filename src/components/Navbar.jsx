@@ -13,8 +13,34 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.classList.toggle('no-scroll', isMenuOpen);
+    return () => document.body.classList.remove('no-scroll');
+  }, [isMenuOpen]);
+
+  // Close menu on resize above mobile breakpoint
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMenuOpen]);
+
+  // Close on Escape key
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((s) => !s);
   };
 
   const closeMenu = () => {
@@ -32,18 +58,24 @@ function Navbar() {
         <div className="logo">
           <a href="#home">Roland Alam</a>
         </div>
-        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <li><a href="#home" className="nav-link" onClick={closeMenu}>Home</a></li>
-          <li><a href="#about" className="nav-link" onClick={closeMenu}>About</a></li>
-          <li><a href="#skills" className="nav-link" onClick={closeMenu}>Skills</a></li>
-          <li><a href="#projects" className="nav-link" onClick={closeMenu}>Projects</a></li>
-          <li><a href="#contact" className="nav-link" onClick={closeMenu}>Contact</a></li>
+        <ul id="main-navigation" className={`nav-menu ${isMenuOpen ? 'active' : ''}`} role="menu">
+          <li role="none"><a href="#home" role="menuitem" className="nav-link" onClick={closeMenu}>Home</a></li>
+          <li role="none"><a href="#about" role="menuitem" className="nav-link" onClick={closeMenu}>About</a></li>
+          <li role="none"><a href="#skills" role="menuitem" className="nav-link" onClick={closeMenu}>Skills</a></li>
+          <li role="none"><a href="#projects" role="menuitem" className="nav-link" onClick={closeMenu}>Projects</a></li>
+          <li role="none"><a href="#contact" role="menuitem" className="nav-link" onClick={closeMenu}>Contact</a></li>
         </ul>
-        <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+        <button
+          className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="main-navigation"
+        >
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
     </nav>
   );
