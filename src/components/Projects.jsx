@@ -35,8 +35,10 @@ function Projects() {
     {
       title: 'E-Commerce Storefront',
       description: 'Responsive online store with product catalogs, shopping cart functionality, and checkout pages.',
-      image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80',
-      tech: ['React', 'Bootstrap', 'Stripe']
+      image: 'https://ewm.swiss/application/files/8216/1597/9679/E-commerce_web_design_EWM_SA_Digital_Agency_Geneva.jpg',
+      tech: ['React', 'Bootstrap', 'Stripe'],
+      liveUrl: 'https://ecommerce-5govqbmnn-robat-1s-projects.vercel.app/',
+      githubUrl: '#'
     },
     {
       title: 'Real Estate Website',
